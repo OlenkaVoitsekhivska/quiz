@@ -1,0 +1,24 @@
+<app-card class="form-wrapper"
+  ><form [formGroup]="formService.form">
+    <div>
+      <app-input
+        [type]="emailType"
+        [label]="emailLabel"
+        formControlName="email"
+      ></app-input>
+    </div>
+    <div>
+      <app-input
+        [type]="passwordType"
+        [label]="passwordLabel"
+        formControlName="password"
+      ></app-input>
+    </div>
+    <app-button
+      [label]="buttonLabel"
+      [type]="buttonType"
+      (click)="formService.handleRegistration()"
+      [loading]="formService.isLoading"
+    ></app-button>
+  </form>
+</app-card>

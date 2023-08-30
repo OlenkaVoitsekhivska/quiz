@@ -1,0 +1,34 @@
+<a [routerLink]="['/auth', 'registration']">Wanna go someplace else?</a>
+<app-card
+  ><form [formGroup]="formService.form">
+    <div class="input-wrapper">
+      <div>
+        <app-input
+          [type]="emailType"
+          [label]="emailLabel"
+          formControlName="email"
+        ></app-input>
+      </div>
+      <div>
+        <app-input
+          [type]="passwordType"
+          [label]="passwordLabel"
+          formControlName="password"
+        ></app-input>
+      </div>
+    </div>
+    <div class="btn-group">
+      <app-button
+        [label]="buttonLabel"
+        [type]="buttonType"
+        (click)="formService.handleSingin()"
+        [loading]="formService.isLoading"
+      ></app-button>
+      <app-button
+        [label]="googleSigninBtnLabel"
+        [type]="buttonType"
+        (click)="formService.handleGoogleSignin()"
+        [loading]="formService.isLoading"
+      ></app-button>
+    </div></form
+></app-card>

@@ -1,0 +1,81 @@
+<h1>Arrange the following case forms according to cases:</h1>
+
+<div class="example-container">
+  <h2>To do</h2>
+
+  <div
+    cdkDropList
+    #caseFormList="cdkDropList"
+    [cdkDropListData]="caseFormsArray()"
+    [cdkDropListConnectedTo]="[NomSgList, GenSgList, NomPlList, GenPlList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div class="example-box" *ngFor="let item of caseFormsArray()" cdkDrag>
+      {{ item }}
+    </div>
+  </div>
+</div>
+
+<div class="example-container">
+  <h2>Done</h2>
+
+  <div
+    cdkDropList
+    #NomSgList="cdkDropList"
+    [cdkDropListData]="NomSg"
+    [cdkDropListConnectedTo]="[caseFormList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div class="example-box" *ngFor="let item of NomSg" cdkDrag>{{ item }}</div>
+  </div>
+  <div class="example-container">
+    <h2>Done</h2>
+
+    <div
+      cdkDropList
+      #GenSgList="cdkDropList"
+      [cdkDropListData]="GenSg"
+      [cdkDropListConnectedTo]="[caseFormList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="example-box" *ngFor="let item of GenSg" cdkDrag>
+        {{ item }}
+      </div>
+    </div>
+    <div class="example-container">
+      <h2>Done</h2>
+
+      <div
+        cdkDropList
+        #NomPlList="cdkDropList"
+        [cdkDropListData]="NomPl"
+        [cdkDropListConnectedTo]="[caseFormList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="example-box" *ngFor="let item of NomPl" cdkDrag>
+          {{ item }}
+        </div>
+      </div>
+      <div class="example-container">
+        <h2>Done</h2>
+
+        <div
+          cdkDropList
+          #GenPlList="cdkDropList"
+          [cdkDropListData]="GenPl"
+          [cdkDropListConnectedTo]="[caseFormList]"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="example-box" *ngFor="let item of GenPl" cdkDrag>
+            {{ item }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

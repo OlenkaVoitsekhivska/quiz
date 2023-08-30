@@ -1,0 +1,18 @@
+<div class="flex-wrapper">
+  <div class="left">
+    <app-match-card
+      *ngFor="let option of latOptions()"
+      [option]="option"
+      [column]="'1'"
+    ></app-match-card>
+  </div>
+
+  <div class="right">
+    <app-match-card
+      *ngFor="let option of shuffledTranslations()"
+      [option]="option"
+      [language]="language.EN"
+      [column]="'2'"
+    ></app-match-card>
+  </div>
+</div>

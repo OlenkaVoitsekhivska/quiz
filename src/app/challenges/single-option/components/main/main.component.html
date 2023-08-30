@@ -1,0 +1,8 @@
+<app-card> translate into English: {{ latWord()?.word }} </app-card>
+
+<div *ngFor="let option of options">
+  <app-option-card [option]="option" class="option-box"></app-option-card>
+</div>
+
+<h1>IS CORRECT ANSWER: {{ isCorrectAnswer() }}</h1>
+<app-timer></app-timer>
