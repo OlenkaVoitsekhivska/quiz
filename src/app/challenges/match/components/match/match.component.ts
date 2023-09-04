@@ -1,7 +1,9 @@
+//angular
 import { Component, Signal } from '@angular/core';
-import { Vocabulum } from 'src/app/challenges/models/vocabulum.interface';
+
+//app
 import { MatchService } from 'src/app/challenges/services/match.service';
-import { mockVocabula } from 'src/app/core/data/mockVocabula';
+import { Vocabulum } from 'src/app/challenges/models/vocabulum.interface';
 import { Language } from 'src/app/core/models/language.enum';
 
 @Component({
@@ -12,6 +14,7 @@ import { Language } from 'src/app/core/models/language.enum';
 export class MatchComponent {
   //signals
   public latOptions!: Signal<Vocabulum[]>;
+
   public shuffledTranslations!: Signal<Vocabulum[]>;
 
   //interfaces & enums:

@@ -1,12 +1,9 @@
+//angular
 import { Injectable, WritableSignal, signal } from '@angular/core';
+
+//app
 import { mockVocabula } from 'src/app/core/data/mockVocabula';
 import { Vocabulum } from '../models/vocabulum.interface';
-import { signInAnonymously } from 'firebase/auth';
-
-interface matchSet {
-  latin: string;
-  translation: string;
-}
 
 interface matchState {
   [latId: string]: string;
@@ -16,24 +13,16 @@ interface matchState {
   providedIn: 'root',
 })
 export class MatchService {
-  matchState: WritableSignal<matchState> = signal({});
+  public matchState: WritableSignal<matchState> = signal({});
 
-  originalWordArray: WritableSignal<Vocabulum[]> = signal(mockVocabula);
+  public originalWordArray: WritableSignal<Vocabulum[]> = signal(mockVocabula);
 
-  intermediateMatchSet: WritableSignal<matchState> = signal({});
+  public shuffledWordArray: WritableSignal<Vocabulum[]> = signal([]);
 
-  shuffledWordArray: WritableSignal<Vocabulum[]> = signal([]);
+  private intermediateMatchSet: WritableSignal<matchState> = signal({});
+
   constructor() {
     this.shuffleArrayElements();
-  }
-
-  public shuffleArrayElements() {
-    const copy = [...mockVocabula];
-    for (let i = copy.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [copy[i], copy[j]] = [copy[j], copy[i]];
-    }
-    this.shuffledWordArray.set(copy);
   }
 
   public updateMatchColumn(word: Vocabulum, column: '1' | '2') {
@@ -67,6 +56,14 @@ export class MatchService {
         state.filter((word) => word.id !== translationId)
       );
     }
-    console.log('CURRENT MATCH STATE', this.matchState());
+  }
+
+  private shuffleArrayElements() {
+    const copy = [...mockVocabula];
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    this.shuffledWordArray.set(copy);
   }
 }

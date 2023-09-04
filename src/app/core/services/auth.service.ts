@@ -6,18 +6,14 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithPopup,
   signOut,
   signInWithRedirect,
-  getRedirectResult,
 } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
-
   public async signIn(email: string, password: string): Promise<any> {
     const auth = getAuth();
     try {
@@ -71,19 +67,8 @@ export class AuthService {
     //prefferred method for mobile devices would be redirect signInWithRedirect(auth, provider);
   }
 
-  signOut() {
+  public signOut() {
     const auth = getAuth();
-
     return signOut(auth);
-  }
-
-  ngOnDestroy() {
-    // when manually subscribing to an observable remember to unsubscribe in ngOnDestroy
-    // this.userSubscription.unsubscribe();
-  }
-
-  getCurrentUser() {
-    const auth = getAuth();
-    console.log('THIS IS CURRENT USER', auth.currentUser);
   }
 }

@@ -7,7 +7,8 @@ import { ButtonType } from 'src/app/core/models/button-type';
   styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent {
-  @Input() label!: string;
-  @Input() type: ButtonType = ButtonType.BUTTON;
-  @Input() loading: boolean = false;
+  @Input() public label!: string;
+  @Input() public type: ButtonType = ButtonType.BUTTON;
+  @Input() public loading = false;
+  @Input() public disabled = false;
 }

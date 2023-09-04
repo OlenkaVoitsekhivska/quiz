@@ -1,8 +1,34 @@
-<app-card> translate into English: {{ latWord()?.word }} </app-card>
+<div *ngIf="!showResults(); else result">
+  <app-card> translate into English: {{ latWord()?.word }} </app-card>
 
-<div *ngFor="let option of options">
-  <app-option-card [option]="option" class="option-box"></app-option-card>
+  <div *ngFor="let option of options">
+    <app-option-card
+      [option]="option"
+      class="option-box]"
+      [language]="optionCardLanguage"
+    ></app-option-card>
+  </div>
+
+  <!-- <app-timer></app-timer> -->
+
+  <app-button
+    (click)="handleAnswer()"
+    [label]="buttonLabel"
+    [type]="buttonType"
+    [disabled]="shouldDisableButton"
+  ></app-button>
 </div>
 
-<h1>IS CORRECT ANSWER: {{ isCorrectAnswer() }}</h1>
-<app-timer></app-timer>
+<ng-template #result>
+  <ul>
+    <li *ngFor="let item of quizState()">
+      <h3>{{ questionText }} {{ item["expected"] }}</h3>
+      <h3>Your answer : {{ item["actual"] }}</h3>
+      <p>{{ item["match"] }}</p>
+    </li>
+  </ul>
+
+  <!-- <div class="card flex justify-content-center">
+    <p-chart type="pie" [data]="data" [options]="options"></p-chart>
+  </div> -->
+</ng-template>

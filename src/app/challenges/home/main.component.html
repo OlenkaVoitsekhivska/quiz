@@ -1,0 +1,11 @@
+<nav>
+  <a [routerLink]="['singleOptionTranslation']">{{ singleOptionText }}</a>
+  <a [routerLink]="['match']">{{ matchText }}</a>
+  <a [routerLink]="['dragCases']">{{ dragDropCasesText }}</a>
+  <a [routerLink]="['enterAnswer']">{{ enterAnswerText }}</a>
+</nav>
+<app-button
+  [label]="logoutBtnLabel"
+  [type]="logoutBtnType"
+  (click)="logout()"
+></app-button>

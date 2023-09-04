@@ -1,4 +1,3 @@
-<a [routerLink]="['/auth', 'registration']">Wanna go someplace else?</a>
 <app-card
   ><form [formGroup]="formService.form">
     <div class="input-wrapper">
@@ -29,6 +28,8 @@
         [type]="buttonType"
         (click)="formService.handleGoogleSignin()"
         [loading]="formService.isLoading"
-      ></app-button>
-    </div></form
-></app-card>
+      ></app-button
+      ><a [routerLink]="['/auth', 'registration']">{{ signupLabel }}</a>
+    </div>
+  </form></app-card
+>

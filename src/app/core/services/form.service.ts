@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class FormService {
-  form!: FormGroup<AuthForm>;
-  isLoading: boolean = false;
+  public form!: FormGroup<AuthForm>;
+  public isLoading = false;
 
   constructor(
     private fb: FormBuilder,
@@ -17,7 +17,6 @@ export class FormService {
     private router: Router
   ) {
     this.initializeForm();
-    this.authService.getCurrentUser();
   }
   /* PUBLIC METHODS*/
   public async handleSingin() {

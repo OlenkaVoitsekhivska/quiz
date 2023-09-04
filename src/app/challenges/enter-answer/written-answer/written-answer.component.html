@@ -1,0 +1,25 @@
+<ng-container *ngIf="!showResult(); else result">
+  <div>{{ questionText }} {{ latinWord()?.translation }}</div>
+  <form [formGroup]="service.form" (ngSubmit)="service.handleSubmit()">
+    <label for=""
+      >Enter your answer
+      <input type="text" required formControlName="answer" />
+    </label>
+
+    <button type="submit">submit answer</button>
+  </form>
+</ng-container>
+
+<ng-template #result>
+  <ul>
+    <li *ngFor="let item of results()">
+      <h3>{{ questionText }} {{ item["expected"] }}</h3>
+      <h3>Your answer : {{ item["actual"] }}</h3>
+      <p>{{ item["match"] }}</p>
+    </li>
+  </ul>
+
+  <div class="card flex justify-content-center">
+    <p-chart type="pie" [data]="data" [options]="options"></p-chart>
+  </div>
+</ng-template>

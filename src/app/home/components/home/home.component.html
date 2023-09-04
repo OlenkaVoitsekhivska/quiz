@@ -1,7 +1,2 @@
-<app-button
-  [label]="logoutBtnLabel"
-  [type]="logoutBtnType"
-  (click)="handleLogout()"
-></app-button>
-
-<a [routerLink]="['/challenges']">Go to challenges</a>
+<app-button [label]="logoutBtnLabel" [type]="logoutBtnType"></app-button>
+<a [routerLink]="['/challenges']">{{ challengeLinkText }}</a>

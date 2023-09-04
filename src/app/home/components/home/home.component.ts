@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { ButtonType } from 'src/app/core/models/button-type';
-import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -9,16 +7,9 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  logoutBtnLabel = 'Log out';
-  logoutBtnType = ButtonType.BUTTON;
+  public logoutBtnLabel = 'Log out';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  public challengeLinkText = 'Go to challenges';
 
-  ngOnInit() {}
-
-  handleLogout() {
-    this.authService
-      .signOut()
-      .then(() => this.router.navigate(['auth', 'login']));
-  }
+  public logoutBtnType = ButtonType.BUTTON;
 }

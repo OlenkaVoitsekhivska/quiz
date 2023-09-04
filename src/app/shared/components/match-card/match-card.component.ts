@@ -8,12 +8,13 @@ import { MatchService } from 'src/app/challenges/services/match.service';
   styleUrls: ['./match-card.component.scss'],
 })
 export class MatchCardComponent extends SuperOptionCard {
-  @Input() column: '1' | '2' = '1';
+  @Input() public column: '1' | '2' = '1';
+
   constructor(private matchService: MatchService) {
     super();
   }
 
-  handleSelect() {
+  public handleSelect() {
     this.matchService.updateMatchColumn(this.option, this.column);
   }
 }

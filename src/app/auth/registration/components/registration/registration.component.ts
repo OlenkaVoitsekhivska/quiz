@@ -1,7 +1,10 @@
+//angular
 import { Component } from '@angular/core';
+
+//app
+import { FormService } from 'src/app/core/services/form.service';
 import { ButtonType } from 'src/app/core/models/button-type';
 import { InputType } from 'src/app/core/models/input-type';
-import { FormService } from 'src/app/core/services/form.service';
 
 @Component({
   selector: 'app-registration',
@@ -9,13 +12,17 @@ import { FormService } from 'src/app/core/services/form.service';
   styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent {
-  emailLabel = 'Enter email:';
-  passwordLabel = 'Enter password:';
-  buttonLabel = 'Sign up';
+  public emailLabel = 'Enter email:';
 
-  emailType = InputType.EMAIL;
-  passwordType = InputType.PASSWORD;
-  buttonType = ButtonType.SUBMIT;
+  public passwordLabel = 'Enter password:';
+
+  public buttonLabel = 'Sign up';
+
+  public emailType = InputType.EMAIL;
+
+  public passwordType = InputType.PASSWORD;
+
+  public buttonType = ButtonType.SUBMIT;
 
   constructor(public formService: FormService) {}
 }

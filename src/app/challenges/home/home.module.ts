@@ -1,18 +1,15 @@
-//angular
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MainComponent } from './main.component';
 import { RouterModule } from '@angular/router';
-
-//app
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MatchComponent } from './components/match/match.component';
 
 @NgModule({
-  declarations: [MatchComponent],
+  declarations: [MainComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild([{ path: '', component: MatchComponent }]),
+    RouterModule.forChild([{ path: '', component: MainComponent }]),
     SharedModule,
   ],
 })
-export class MatchModule {}
+export class HomeModule {}

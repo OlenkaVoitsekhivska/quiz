@@ -18,7 +18,7 @@ export class InputComponent implements ControlValueAccessor {
   @Input() public type: InputType = InputType.TEXT;
   @Input() public label!: string;
 
-  value!: boolean | string | number;
+  public value!: boolean | string | number;
 
   public onChange!: (value: any) => void;
   public onTouched!: (value: any) => void;
@@ -33,8 +33,9 @@ export class InputComponent implements ControlValueAccessor {
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
-  registerOnTouched(fn: any): void {}
-  setDisabledState?(isDisabled: boolean): void {}
+  registerOnTouched(): void {}
+
+  setDisabledState?(): void {}
 
   public handleInput(event: Event) {
     const targetEl = event.target as HTMLInputElement;

@@ -1,7 +1,6 @@
 import { Route } from '@angular/router';
 import { authGuard } from '../guards/auth.guard';
 import { leavePageGuard } from '../guards/leave-page.guard';
-// import { AuthGuard } from '@angular/fire/auth-guard';
 
 export const appPaths: Route[] = [
   { path: '', pathMatch: 'full', redirectTo: '/auth' },

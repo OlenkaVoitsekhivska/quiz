@@ -3,11 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {
-  Firestore,
-  getFirestore,
-  provideFirestore,
-} from '@angular/fire/firestore';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';

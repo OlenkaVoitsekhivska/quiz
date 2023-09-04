@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from './components/main/main.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MainComponent,
+    loadChildren: () =>
+      import('src/app/challenges/home/home.module').then(
+        (mod) => mod.HomeModule
+      ),
   },
   {
     path: 'singleOptionTranslation',
@@ -26,6 +28,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('src/app/challenges/cases-drag/cases-drag.module').then(
         (mod) => mod.CasesDragModule
+      ),
+  },
+  {
+    path: 'enterAnswer',
+    loadChildren: () =>
+      import('src/app/challenges/enter-answer/enter-answer.module').then(
+        (mod) => mod.EnterAnswerModule
       ),
   },
 ];

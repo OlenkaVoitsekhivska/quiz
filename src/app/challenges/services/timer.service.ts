@@ -1,4 +1,7 @@
+//angular
 import { Injectable } from '@angular/core';
+
+//third-party
 import {
   BehaviorSubject,
   Observable,
@@ -15,12 +18,12 @@ export class TimerService {
   private countdown$!: BehaviorSubject<number>;
   private countdownSubscription!: Subscription;
 
-  setTime(time: number): void {
+  public setTime(time: number): void {
     this.countdownDuration = time;
     this.countdown$ = new BehaviorSubject<number>(this.countdownDuration);
   }
 
-  startCountdown(): void {
+  public startCountdown(): void {
     this.countdownSubscription = interval(1000)
       .pipe(takeWhile((value) => value < this.countdownDuration))
       .subscribe((value) => {
@@ -29,13 +32,13 @@ export class TimerService {
       });
   }
 
-  stopCountdown(): void {
+  public stopCountdown(): void {
     if (this.countdownSubscription) {
       this.countdownSubscription.unsubscribe();
     }
   }
 
-  getCountdown(): Observable<number> {
+  public getCountdown(): Observable<number> {
     return this.countdown$.asObservable();
   }
 }

@@ -1,81 +1,127 @@
-<h1>Arrange the following case forms according to cases:</h1>
+<ng-container *ngIf="!showResult(); else result"
+  ><h1>Arrange the following case forms according to cases:</h1>
 
-<div class="example-container">
-  <h2>To do</h2>
-
-  <div
-    cdkDropList
-    #caseFormList="cdkDropList"
-    [cdkDropListData]="caseFormsArray()"
-    [cdkDropListConnectedTo]="[NomSgList, GenSgList, NomPlList, GenPlList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)"
-  >
-    <div class="example-box" *ngFor="let item of caseFormsArray()" cdkDrag>
-      {{ item }}
-    </div>
-  </div>
-</div>
-
-<div class="example-container">
-  <h2>Done</h2>
-
-  <div
-    cdkDropList
-    #NomSgList="cdkDropList"
-    [cdkDropListData]="NomSg"
-    [cdkDropListConnectedTo]="[caseFormList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)"
-  >
-    <div class="example-box" *ngFor="let item of NomSg" cdkDrag>{{ item }}</div>
-  </div>
   <div class="example-container">
-    <h2>Done</h2>
+    <h2>Case forms</h2>
 
     <div
       cdkDropList
-      #GenSgList="cdkDropList"
-      [cdkDropListData]="GenSg"
-      [cdkDropListConnectedTo]="[caseFormList]"
-      class="example-list"
+      #caseFormList="cdkDropList"
+      cdkDropListOrientation="horizontal"
+      [cdkDropListData]="caseFormsArray()"
+      [cdkDropListConnectedTo]="[NomSgList, GenSgList, NomPlList, GenPlList]"
+      class="caseform-container"
       (cdkDropListDropped)="drop($event)"
     >
-      <div class="example-box" *ngFor="let item of GenSg" cdkDrag>
+      <div class="example-box" *ngFor="let item of caseFormsArray()" cdkDrag>
+        {{ item }}
+      </div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>Nom.Sg.</h2>
+
+    <div
+      cdkDropList
+      #NomSgList="cdkDropList"
+      [cdkDropListData]="NomSg"
+      [cdkDropListConnectedTo]="[caseFormList]"
+      class="example-list"
+      cdkDropListSortingDisabled
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="example-box" *ngFor="let item of NomSg" cdkDrag>
         {{ item }}
       </div>
     </div>
     <div class="example-container">
-      <h2>Done</h2>
+      <h2>Gen.Sg.</h2>
 
       <div
         cdkDropList
-        #NomPlList="cdkDropList"
-        [cdkDropListData]="NomPl"
+        #GenSgList="cdkDropList"
+        [cdkDropListData]="GenSg"
         [cdkDropListConnectedTo]="[caseFormList]"
         class="example-list"
+        cdkDropListSortingDisabled
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="example-box" *ngFor="let item of NomPl" cdkDrag>
+        <div class="example-box" *ngFor="let item of GenSg" cdkDrag>
           {{ item }}
         </div>
       </div>
       <div class="example-container">
-        <h2>Done</h2>
+        <h2>Nom.Pl.</h2>
 
         <div
           cdkDropList
-          #GenPlList="cdkDropList"
-          [cdkDropListData]="GenPl"
+          #NomPlList="cdkDropList"
+          [cdkDropListData]="NomPl"
           [cdkDropListConnectedTo]="[caseFormList]"
           class="example-list"
+          cdkDropListSortingDisabled
           (cdkDropListDropped)="drop($event)"
         >
-          <div class="example-box" *ngFor="let item of GenPl" cdkDrag>
+          <div class="example-box" *ngFor="let item of NomPl" cdkDrag>
             {{ item }}
+          </div>
+        </div>
+        <div class="example-container">
+          <h2>Gen.Pl.</h2>
+
+          <div
+            cdkDropList
+            #GenPlList="cdkDropList"
+            [cdkDropListData]="GenPl"
+            [cdkDropListConnectedTo]="[caseFormList]"
+            class="example-list"
+            cdkDropListSortingDisabled
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div class="example-box" *ngFor="let item of GenPl" cdkDrag>
+              {{ item }}
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+  <app-button
+    [label]="submitBtnLabel"
+    [type]="submitBtnType"
+    [disabled]="!isSubmitBtnEnabled()"
+    (click)="assessAnswer()"
+  ></app-button>
+</ng-container>
+
+<ng-template #result>
+  <ul>
+    <li *ngFor="let item of results()">
+      <p>
+        case:Nom.Sg. expected:{{ item.expected["NomSg"] }}, received:{{
+          item.actual["NomSg"]
+        }}, match:{{ item.match["NomSg"] }}
+      </p>
+
+      <p>
+        case:Gen.Sg. expected:{{ item.expected["GenSg"] }}, received:{{
+          item.actual["GenSg"]
+        }}, match:{{ item.match["GenSg"] }}
+      </p>
+
+      <p>
+        case:Nom.Pl. expected:{{ item.expected["NomPl"] }}, received:{{
+          item.actual["NomPl"]
+        }}, match:{{ item.match["NomPl"] }}
+      </p>
+
+      <p>
+        case:Gen.PL. expected:{{ item.expected["GenPl"] }}, received:{{
+          item.actual["GenPl"]
+        }}, match:{{ item.match["GenPl"] }}
+      </p>
+    </li>
+  </ul></ng-template
+>

@@ -8,7 +8,7 @@ import { TimerService } from '../../../challenges/services/timer.service';
   styleUrls: ['./timer.component.scss'],
 })
 export class TimerComponent {
-  countdown!: Observable<any>;
+  public countdown!: Observable<any>;
 
   constructor(private timerService: TimerService) {}
 
